@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "ng serve --port 3000",
+    "dev": "ng serve --host 0.0.0.0 --port 3000",
     "build": "ng build",
-    "start": "ng serve --port 3000"
+    "start": "ng serve --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
     "@angular/animations": "^22.1.5",
