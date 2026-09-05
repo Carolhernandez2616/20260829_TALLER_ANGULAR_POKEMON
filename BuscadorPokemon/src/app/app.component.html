@@ -1,0 +1,51 @@
+<main class="page-shell">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="brand-mark" aria-hidden="true"><span></span><span></span></div>
+    <p class="eyebrow">Pokédex digital</p>
+    <h1 id="page-title">Explora el mundo<br><em>Pokémon</em></h1>
+    <p class="intro">Busca tus Pokémon favoritos y descubre su ilustración oficial.</p>
+
+    <form class="search-form" (ngSubmit)="search()">
+      <label class="sr-only" for="pokemon-search">Nombres de Pokémon</label>
+      <input id="pokemon-search" name="pokemon-search" [ngModel]="query()" (ngModelChange)="query.set($event)" placeholder="pikachu, mewtwo..." autocomplete="off">
+      <button type="submit" [disabled]="loading()">
+        <span>{{ loading() ? 'Buscando...' : 'Buscar Pokémon' }}</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </button>
+    </form>
+    <p class="hint">Puedes buscar hasta 12 nombres separados por comas.</p>
+  </section>
+
+  <section class="results-section" aria-live="polite" aria-labelledby="results-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Resultados</p>
+        <h2 id="results-title">Tu colección</h2>
+      </div>
+      @if (pokemon().length) { <span class="count">{{ pokemon().length }} encontrados</span> }
+    </div>
+
+    @if (loading()) {
+      <div class="status-card"><span class="loader"></span><p>Consultando la PokéAPI...</p></div>
+    } @else if (error()) {
+      <div class="status-card error-card"><p>{{ error() }}</p></div>
+    } @else if (pokemon().length) {
+      <div class="pokemon-grid">
+        @for (item of pokemon(); track item.id) {
+          <article class="pokemon-card">
+            <span class="pokemon-id">#{{ item.id.toString().padStart(3, '0') }}</span>
+            <div class="image-wrap"><img [src]="item.image" [alt]="'Ilustración oficial de ' + formatName(item.name)" loading="lazy"></div>
+            <h3>{{ formatName(item.name) }}</h3>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="empty-state">
+        <div class="pokeball" aria-hidden="true"><span></span></div>
+        <h3>{{ searched() ? 'Tu búsqueda está vacía' : 'Tu colección empieza aquí' }}</h3>
+        <p>Escribe un nombre arriba para encontrar nuevas criaturas.</p>
+      </div>
+    }
+  </section>
+  <footer>Datos e imágenes proporcionados por <a href="https://pokeapi.co" target="_blank" rel="noreferrer">PokéAPI</a></footer>
+</main>
