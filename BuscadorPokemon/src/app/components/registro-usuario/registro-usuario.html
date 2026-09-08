@@ -1,1 +1,187 @@
-<p>registro-usuario works!</p>
+<main class="page">
+    <section class="card" aria-labelledby="form-title">
+
+      <!-- ================= ENCABEZADO ================= -->
+      <header class="card__header">
+        <h1 id="form-title" class="card__title">Formulario de Registro</h1>
+        <p class="card__subtitle">Complete sus datos personales para crear su cuenta</p>
+      </header>
+
+    <div>
+      <form id="Formulario" (ngSubmit)="guardarUsuario()">
+
+        <!-- ================= IDENTIDAD ================= -->
+        <div class="grid">
+
+          <div class="field">
+            <label for="nombre">Nombre <span class="req">*</span></label>
+            <input type="text" id="nombre" [(ngModel)]="Nombre" name="nombre" class="input"
+                   placeholder="Ej. Carolina" required minlength="2" maxlength="60"
+                   >
+            <span class="hint hint--error">Ingrese un nombre válido (solo letras).</span>
+          </div>
+
+          <div class="field">
+            <label for="apellido">Apellido <span class="req">*</span></label>
+            <input type="text" id="apellido" [(ngModel)]="Apellido" name="apellido" class="input"
+                   placeholder="Ej. Ramírez" required minlength="2" maxlength="60"
+                   >
+            <span class="hint hint--error">Ingrese un apellido válido (solo letras).</span>
+          </div>
+
+          <div class="field">
+            <label for="tipoDocumento">Tipo de documento <span class="req">*</span></label>
+            <select id="tipoDocumento" [(ngModel)]="Tipo_de_documento" name="tipoDocumento" class="select" required>
+              <option value="" selected disabled>Seleccione…</option>
+              <option value="CC">Cédula de ciudadanía (CC)</option>
+              <option value="TI">Tarjeta de identidad (TI)</option>
+              <option value="CE">Cédula de extranjería (CE)</option>
+              <option value="PA">Pasaporte (PA)</option>
+              <option value="PPT">Permiso por Protección Temporal (PPT)</option>
+            </select>
+            <span class="hint hint--error">Seleccione un tipo de documento.</span>
+          </div>
+
+          <div class="field">
+            <label for="dni">Número de documento <span class="req">*</span></label>
+            <input type="text" inputmode="numeric" id="dni" [(ngModel)]="dni" name="dni" class="input input--mono"
+                   placeholder="Ej. 1013456789" required minlength="5" maxlength="15"
+                   >
+            <span class="hint hint--error">Ingrese un número de documento válido.</span>
+          </div>
+
+          <div class="field">
+            <label for="fechaNacimiento">Fecha de nacimiento <span class="req">*</span></label>
+            <input type="date" id="fechaNacimiento" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" class="input" required>
+            <span class="hint hint--error">Ingrese una fecha válida.</span>
+          </div>
+
+          <div class="field">
+            <label for="genero">Género <span class="req">*</span></label>
+            <select id="genero" [(ngModel)]="genero" name="genero" class="select" required>
+              <option value="" selected disabled>Seleccione…</option>
+              <option value="F">Femenino</option>
+              <option value="M">Masculino</option>
+              <option value="O">Otro</option>
+              <option value="N">Prefiero no decir</option>
+            </select>
+            <span class="hint hint--error">Seleccione una opción.</span>
+          </div>
+
+        </div>
+
+        <!-- ================= CONTACTO ================= -->
+        <p class="section-label">Contacto</p>
+
+        <div class="grid">
+
+          <div class="field">
+            <label for="correo">Correo electrónico <span class="req">*</span></label>
+            <input type="email" id="correo" [(ngModel)]="correo" name="correo" class="input"
+                   placeholder="nombre@correo.com" required>
+            <span class="hint hint--error">Ingrese un correo electrónico válido.</span>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Número de teléfono <span class="req">*</span></label>
+            <input type="tel" inputmode="tel" id="telefono" [(ngModel)]="telefono" name="telefono" class="input input--mono"
+                   placeholder="Ej. +57 3001234567" required >
+            <span class="hint hint--error">Ingrese un teléfono válido, con indicativo de país.</span>
+          </div>
+
+          <div class="field">
+            <label for="pais">País de domicilio <span class="req">*</span></label>
+            <select id="pais" [(ngModel)]="pais" name="pais" class="select" required>
+              <option value="" disabled selected>Seleccione un país…</option>
+              <option value="480">México</option>
+              <option value="169">Colombia</option>
+              <option value="850">Estados Unidos</option>
+            </select>
+            <span class="hint hint--error">Seleccione su país de domicilio.</span>
+          </div>
+
+          <div class="field">
+            <label for="ciudad">Ciudad de domicilio <span class="req">*</span></label>
+            <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" class="select" required>
+              <option value="" selected disabled>Seleccione una ciudad…</option>
+              
+              <optgroup label="Colombia">
+                <option value="11001">Bogotá</option>
+                <option value="05001">Medellín</option>
+                <option value="76001">Cali</option>
+                <option value="08001">Barranquilla</option>
+                <option value="13001">Cartagena</option>
+              </optgroup>
+
+              <optgroup label="México">
+                <option value="01000">Ciudad de México</option>
+                <option value="44000">Guadalajara</option>
+                <option value="64000">Monterrey</option>
+                <option value="72000">Puebla</option>
+                <option value="22000">Tijuana</option>
+              </optgroup>
+
+              <optgroup label="Estados Unidos">
+                <option value="10001">Nueva York</option>
+                <option value="90001">Los Ángeles</option>
+                <option value="60601">Chicago</option>
+                <option value="77001">Houston</option>
+                <option value="19102">Filadelfia</option>
+              </optgroup>
+            </select>
+            <span class="hint hint--error">Seleccione una ciudad.</span>
+          </div>
+
+        </div>
+
+        <!-- ================= AUTORIZACIÓN ================= -->
+        <p class="section-label">Autorización</p>
+
+        <details class="policy">
+          <summary>Ver política de tratamiento de datos</summary>
+          <p>Los datos personales suministrados en este formulario (nombre, apellido, tipo y número
+            de documento, fecha de nacimiento, correo electrónico, domicilio y teléfono) serán
+            utilizados exclusivamente para fines de identificación, registro y contacto.</p>
+          <p>Usted puede solicitar en cualquier momento el acceso, actualización, rectificación
+            o eliminación de sus datos, escribiendo al canal de atención dispuesto para tal fin.</p>
+        </details>
+
+        <div class="consent">
+          <label class="checkbox">
+            <input type="checkbox" id="tratamientoDatos" [(ngModel)]="tratamientoDatos" name="tratamientoDatos" required>
+            <span class="checkbox__box" aria-hidden="true"></span>
+            <span class="checkbox__text">
+              Autorizo el <strong>tratamiento de mis datos personales</strong> conforme a la Ley 1581 de 2012
+              y demás normas aplicables, para los fines descritos en la política de tratamiento de datos.
+              <span class="req">*</span>
+            </span>
+          </label>
+          <span class="hint hint--error hint--checkbox">Debe aceptar el tratamiento de datos para continuar.</span>
+        </div>
+
+        <!-- ================= ACCIONES ================= -->
+        <div class="actions">
+          <button type="reset" class="btn btn--ghost">Limpiar formulario</button>
+          <button type="submit" class="btn btn--primary">Enviar registro <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+@if (ultimoUsuario() ; as user) {
+    <div class="user-info">
+      <h3>Usuario registrado</h3>
+      <p><strong>ID generado:</strong> {{ user.id }}</p>
+      <p><strong>Nombre:</strong> {{ user.nombreCompleto }}</p>
+      <p><strong>Documento:</strong> {{ user.documento.propiedad }} {{ user.documento.propiedad }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_Nacimiento }}</p>
+      <p><strong>Género:</strong> {{ user.Genero }}</p>
+      <p><strong>Correo electrónico:</strong> {{ user.Correo_electronico }}</p>
+      <p><strong>Número de teléfono:</strong> {{ user.Numero_de_telefono }}</p>
+      <p><strong>Pais de domicilio:</strong> {{ user.domicilio.Pais_de_domicilio }}</p>
+      <p><strong>Ciudad de domicilio:</strong> {{ user.domicilio.Ciudad_de_domicilio }}</p>  
+    </div>
+    </section>
+
+
+</main>
+
