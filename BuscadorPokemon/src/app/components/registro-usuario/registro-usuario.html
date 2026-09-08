@@ -52,13 +52,13 @@
 
           <div class="field">
             <label for="fechaNacimiento">Fecha de nacimiento <span class="req">*</span></label>
-            <input type="date" id="fechaNacimiento" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" class="input" required>
+            <input type="date" id="fechaNacimiento" [(ngModel)]="Fecha_de_nacimiento" name="fechaNacimiento" class="input" required>
             <span class="hint hint--error">Ingrese una fecha válida.</span>
           </div>
 
           <div class="field">
             <label for="genero">Género <span class="req">*</span></label>
-            <select id="genero" [(ngModel)]="genero" name="genero" class="select" required>
+            <select id="genero" [(ngModel)]="Genero" name="genero" class="select" required>
               <option value="" selected disabled>Seleccione…</option>
               <option value="F">Femenino</option>
               <option value="M">Masculino</option>
@@ -77,21 +77,21 @@
 
           <div class="field">
             <label for="correo">Correo electrónico <span class="req">*</span></label>
-            <input type="email" id="correo" [(ngModel)]="correo" name="correo" class="input"
+            <input type="email" id="correo" [(ngModel)]="Correo_electronico" name="correo" class="input"
                    placeholder="nombre@correo.com" required>
             <span class="hint hint--error">Ingrese un correo electrónico válido.</span>
           </div>
 
           <div class="field">
             <label for="telefono">Número de teléfono <span class="req">*</span></label>
-            <input type="tel" inputmode="tel" id="telefono" [(ngModel)]="telefono" name="telefono" class="input input--mono"
+            <input type="tel" inputmode="tel" id="telefono" [(ngModel)]="Numero_de_telefono" name="telefono" class="input input--mono"
                    placeholder="Ej. +57 3001234567" required >
             <span class="hint hint--error">Ingrese un teléfono válido, con indicativo de país.</span>
           </div>
 
           <div class="field">
             <label for="pais">País de domicilio <span class="req">*</span></label>
-            <select id="pais" [(ngModel)]="pais" name="pais" class="select" required>
+            <select id="pais" [(ngModel)]="Pais_de_domicilio" name="pais" class="select" required>
               <option value="" disabled selected>Seleccione un país…</option>
               <option value="480">México</option>
               <option value="169">Colombia</option>
@@ -102,7 +102,7 @@
 
           <div class="field">
             <label for="ciudad">Ciudad de domicilio <span class="req">*</span></label>
-            <select id="ciudad" [(ngModel)]="ciudad" name="ciudad" class="select" required>
+            <select id="ciudad" [(ngModel)]="Ciudad_de_domicilio" name="ciudad" class="select" required>
               <option value="" selected disabled>Seleccione una ciudad…</option>
               
               <optgroup label="Colombia">
@@ -148,7 +148,7 @@
 
         <div class="consent">
           <label class="checkbox">
-            <input type="checkbox" id="tratamientoDatos" [(ngModel)]="tratamientoDatos" name="tratamientoDatos" required>
+            <input type="checkbox" id="tratamientoDatos" [(ngModel)]="Tratamiento_de_datos" name="tratamientoDatos" required>
             <span class="checkbox__box" aria-hidden="true"></span>
             <span class="checkbox__text">
               Autorizo el <strong>tratamiento de mis datos personales</strong> conforme a la Ley 1581 de 2012
