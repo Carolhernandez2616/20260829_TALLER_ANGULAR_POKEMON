@@ -167,19 +167,19 @@
         </div>
       </form>
     </div>
-@if (ultimoUsuario() ; as user) {
+@if (ultimoUsuario(); as user) {
     <div class="user-info">
       <h3>Usuario registrado</h3>
       <p><strong>ID generado:</strong> {{ user.id }}</p>
       <p><strong>Nombre:</strong> {{ user.nombreCompleto }}</p>
-      <p><strong>Documento:</strong> {{ user.documento.propiedad }} {{ user.documento.propiedad }}</p>
+      <p><strong>Documento:</strong> {{ user.documento.tipo }} {{ user.documento.numero }}</p>
       <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_Nacimiento }}</p>
       <p><strong>Género:</strong> {{ user.Genero }}</p>
       <p><strong>Correo electrónico:</strong> {{ user.Correo_electronico }}</p>
       <p><strong>Número de teléfono:</strong> {{ user.Numero_de_telefono }}</p>
       <p><strong>Pais de domicilio:</strong> {{ user.domicilio.Pais_de_domicilio }}</p>
       <p><strong>Ciudad de domicilio:</strong> {{ user.domicilio.Ciudad_de_domicilio }}</p>  
-    </div>
+    </div>}
     </section>
 
 
