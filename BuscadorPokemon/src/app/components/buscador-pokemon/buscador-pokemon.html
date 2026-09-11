@@ -12,7 +12,7 @@
   </div>
 
   <div>
-     <button type="submit"[disabled]="cargando()"> {{ cargando() ? 'Buscando...' : 'Buscar' }}</button>
+     <button type="submit"[disabled]="cargando()"> {{ cargando() ? 'Escaneando...' : 'Buscar' }}</button>
   </div>
 
 </form>
@@ -31,10 +31,12 @@
       <span class="badge-tipo" [ngStyle]="
       {
         'background-color': poke.type === 'fire' ? '#ff000' :
-                           poke.type === 'water' ? '#0000ff' :
-                           poke.type === 'grass' ? '#00ff00' : 
+                            poke.type === 'water' ? '#0000ff':
+                            poke.type === 'grass' ? '#00ff00': 
       }">
+
         {{ poke.type }}
+
       </span>
     </p>
       <p>Exp. Base : <strong>{{ poke.base_experience }}</strong></p>
@@ -45,5 +47,4 @@
 
   
   </div>
-
-}
+};
