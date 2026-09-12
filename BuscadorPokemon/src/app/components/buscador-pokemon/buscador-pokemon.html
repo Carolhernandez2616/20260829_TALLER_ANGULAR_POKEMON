@@ -3,16 +3,15 @@
   <div>
     <label>Inserte el nombre del Pokémon:</label>
         <input
-    type="text"
-    [(ngModel)]="nombrePokemonInput" 
-    name="nombrePokemon"
-    placeholder="Ej. Pikachu ,Charizard, Bulbasaur"
-    required
-    />
+          type="text"
+          [(ngModel)]="nombrePokemonInput" 
+          name="nombrePokemon"
+          placeholder="Ej. Pikachu ,Charizard, Bulbasaur"
+          required />
   </div>
 
   <div>
-     <button type="submit"[disabled]="cargando()"> {{ cargando() ? 'Escaneando...' : 'Buscar' }}</button>
+     <button type="submit" [disabled]="cargando()"> {{ cargando() ? 'Escaneando...' : 'Buscar' }}</button>
   </div>
 
 </form>
@@ -28,22 +27,18 @@
     <img [src]="poke.image">
     <p>
       Tipo:
-      <span class="badge-tipo" [ngStyle]="
-      {
-        'background-color': poke.type === 'fire' ? '#ff000' :
-                            poke.type === 'water' ? '#0000ff':
-                            poke.type === 'grass' ? '#00ff00': 
-      }">
+      <span class="badge-tipo" [ngStyle] = "{'background-color': poke.type === 'fire' ? '#ff000' :
+                            poke.type === 'water' ? '#0000ff' :
+                            poke.type === 'grass' ? '#00ff00' : '#757575'} ">
 
         {{ poke.type }}
 
       </span>
     </p>
       <p>Exp. Base : <strong>{{ poke.base_experience }}</strong></p>
-      <button class="btn-guardar" (click)="guardarEnEquipo()">
-        Almacenar en inventario
-
-      </button>
+        <button class="btn-guardar" (click)="guardarEnEquipo()">
+          Almacenar en inventario
+        </button>
 
   
   </div>

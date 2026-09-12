@@ -33,7 +33,7 @@ private cargarDesdeStorage() {
 }
 //1. Obtener datos de la API de Pokémon
 buscarEnAPI(nombreOId: string) {
-    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${nombreOId.toLowerCase}`);
+    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${nombreOId.toLowerCase()}`);
 
 }
 //2. Guardar/Crear nuevo Pokémon en el almacenamiento local
