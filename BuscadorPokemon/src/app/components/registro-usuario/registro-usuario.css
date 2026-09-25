@@ -2,24 +2,26 @@
    SISTEMA DE DISEÑO — Formulario de Registro (HTML5 + CSS3 puro)
    ========================================================================== */
 
-:root {
-  --ink: #241B4E;
-  --ink-soft: #5B5289;
-  --paper: #F6F3FC;
-  --paper-dim: #EFE9FB;
-  --accent: #FF6B4A;
-  --accent-dark: #E14E2C;
-  --sage: #16A34A;
-  --danger: #E11D48;
-  --line:#442a91;
-  --line-strong: #9C8FD9;
+:host {
+  display: block;
+  --ink: #193b55;
+  --ink-soft: #536d7d;
+  --paper: #f4fbff;
+  --paper-dim: #fff5d9;
+  --accent: #ff765e;
+  --accent-dark: #e65350;
+  --sage: #087f74;
+  --danger: #c7475a;
+  --line: #46b8ad;
+  --line-strong: #168e91;
+  --border-gradient: linear-gradient(125deg, #ff725e 0%, #ffc247 35%, #24b9a5 68%, #4389dc 100%);
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
   --radius: 10px;
-  --border-w: 2px;
+  --border-w: 2.5px;
 }
 
 * { 
@@ -47,24 +49,25 @@ body {
   align-items: center;
   justify-content: center;
   padding: 3rem 1.25rem;
-  background: linear-gradient(rgb(63, 63, 145), rgb(236, 135, 152));
+  background: linear-gradient(125deg, #a982e8 0%, #e88fcb 50%, #9bdcf2 100%);
 }
 
 .card {
   width: 100%;
-  max-width: 720px;
-  background: #ffffff;
-  border: var(--border-w) solid #000;
+  max-width: 860px;
+  background: linear-gradient(145deg, #ffffff 0%, #f5fcff 100%) padding-box, var(--border-gradient) border-box;
+  border: 3px solid transparent;
   border-radius: 18px;
-  box-shadow: 0 30px 60px -30px rgba(36, 27, 78, 0.32), 0 2px 8px rgba(36, 27, 78, 0.06);
+  box-shadow: 0 24px 64px -34px rgba(23, 59, 59, 0.32), 0 4px 14px rgba(23, 59, 59, 0.06);
   padding: 3rem 3.25rem 2.75rem;
 }
 
 /* Encabezado */
 .card__header {
   text-align: center;
-  padding-bottom: 0;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid #cde7ec;
 }
 
 .card__title {
@@ -88,9 +91,10 @@ body {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-dark);
-  margin: 2.25rem 0 1.1rem 0;
+  color: var(--sage);
+  margin: 2rem 0 1rem;
   padding-bottom: 0.6rem;
+  border-bottom: 1px solid #cde7ec;
 }
 
 .form > .section-label:first-of-type { 
@@ -118,8 +122,8 @@ body {
 
 label {
   font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--ink-soft);
+  font-weight: 600;
+  color: var(--ink);
   margin-bottom: 0.4rem;
 }
 
@@ -133,11 +137,11 @@ label {
   font-family: inherit;
   font-size: 0.95rem;
   color: var(--ink);
-  background-color: #fff;
-  border: var(--border-w) solid var(--line);
+  background: linear-gradient(#fffdf3, #f4fbff) padding-box, var(--border-gradient) border-box;
+  border: var(--border-w) solid transparent;
   border-radius: var(--radius);
   padding: 0.65rem 0.9rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  transition: box-shadow 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
 }
 
 .input--mono { 
@@ -146,15 +150,7 @@ label {
 }
 
 .select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, var(--ink-soft) 50%),
-                    linear-gradient(135deg, var(--ink-soft) 50%, transparent 50%);
-  background-position: calc(100% - 20px) center, calc(100% - 14px) center;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
-  padding-right: 2.5rem;
+  cursor: pointer;
 }
 
 optgroup {
@@ -164,19 +160,21 @@ optgroup {
 
 .input:hover:not(:disabled),
 .select:hover:not(:disabled) {
-  border-color: var(--line-strong);
+  box-shadow: 0 3px 10px rgba(23, 134, 108, 0.1);
 }
 
-.input:focus,
-.select:focus {
+.input:focus-visible,
+.select:focus-visible {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(255, 107, 74, 0.2);
+  background: linear-gradient(#e4fff6, #eaf7ff) padding-box, linear-gradient(135deg, #ff674f, #ffc247, #16ad9a, #397cda) border-box;
+  box-shadow: 0 0 0 4px rgba(22, 173, 154, 0.22), 0 5px 14px rgba(25, 59, 85, 0.12);
+  transform: translateY(-1px);
 }
 
-.input:user-valid,
-.select:user-valid {
-  border-color: var(--sage);
+.input:disabled,
+.select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 .input:user-invalid,
@@ -204,18 +202,18 @@ optgroup {
    ========================================================================== */
 
 .policy {
-  border: var(--border-w) solid var(--line);
+  border: var(--border-w) solid transparent;
+  background: linear-gradient(#fffdf3, #fffdf3) padding-box, var(--border-gradient) border-box;
   border-radius: var(--radius);
   padding: 0.85rem 1.1rem;
   margin-bottom: 1rem;
-  background: #fff;
 }
 
 .policy summary {
   cursor: pointer;
   font-size: 0.88rem;
   font-weight: 500;
-  color: var(--accent-dark);
+  color: var(--sage);
   list-style: none;
 }
 
@@ -240,8 +238,8 @@ optgroup {
 }
 
 .consent {
-  background: var(--paper-dim);
-  border: var(--border-w) solid var(--line);
+  background: linear-gradient(120deg, #fff8dc, #e5fbf5) padding-box, var(--border-gradient) border-box;
+  border: var(--border-w) solid transparent;
   border-radius: var(--radius);
   padding: 1.1rem 1.25rem;
 }
@@ -268,9 +266,9 @@ optgroup {
   width: 20px;
   height: 20px;
   margin-top: 0.15rem;
-  border: var(--border-w) solid var(--line-strong);
+  border: var(--border-w) solid transparent;
   border-radius: 5px;
-  background: #fff;
+  background: linear-gradient(#fff, #fff) padding-box, var(--border-gradient) border-box;
   position: relative;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -290,8 +288,8 @@ optgroup {
 }
 
 .checkbox input[type="checkbox"]:checked ~ .checkbox__box {
-  background: var(--sage);
-  border-color: var(--sage);
+  background: linear-gradient(#078b78, #13aa91) padding-box, var(--border-gradient) border-box;
+  box-shadow: 0 0 0 3px rgba(23, 134, 108, 0.16);
 }
 
 .checkbox input[type="checkbox"]:checked ~ .checkbox__box::after {
@@ -299,8 +297,7 @@ optgroup {
 }
 
 .checkbox input[type="checkbox"]:focus-visible ~ .checkbox__box {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.2);
+  box-shadow: 0 0 0 4px rgba(237, 120, 95, 0.24);
 }
 
 .checkbox input[type="checkbox"]:user-invalid ~ .checkbox__box {
@@ -331,47 +328,55 @@ optgroup {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.5rem;
+  gap: 1rem;
   padding-top: 1.75rem;
   margin-top: 0.5rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid #cde7ec;
 }
 
 .btn {
   font-family: inherit;
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 650;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .btn--ghost {
-  background: none;
-  border: none;
+  background: linear-gradient(#fffdf3, #fffdf3) padding-box, var(--border-gradient) border-box;
+  border: var(--border-w) solid transparent;
   color: var(--ink-soft);
-  padding: 0.7rem 0.25rem;
+  padding: 0.7rem 1.1rem;
 }
 
 .btn--ghost:hover { 
-  color: var(--danger); 
+  color: var(--ink);
+  box-shadow: 0 4px 12px rgba(23, 59, 59, 0.1);
+  transform: translateY(-1px);
 }
 
 .btn--primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--ink);
-  color: var(--paper);
-  border: var(--border-w) solid var(--ink);
+  background: linear-gradient(115deg, #ff765e, #eb4f68 55%, #ce477c);
+  color: #fff;
+  border: var(--border-w) solid transparent;
+  background-clip: padding-box;
   padding: 0.75rem 1.8rem;
+  box-shadow: 0 5px 12px rgba(222, 79, 92, 0.25);
 }
 
 .btn--primary:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
+  background: linear-gradient(115deg, #e65350, #cf3e69 55%, #ad3f83);
   transform: translateY(-1px);
-  box-shadow: 0 10px 20px -8px rgba(225, 78, 44, 0.45);
+  box-shadow: 0 9px 18px -7px rgba(222, 79, 92, 0.48);
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(237, 120, 95, 0.55);
+  outline-offset: 3px;
 }
 
 .btn__arrow {
