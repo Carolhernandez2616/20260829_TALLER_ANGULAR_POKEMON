@@ -35,7 +35,7 @@ export class BuscadorPokemon {
     next: (res) => {
       this.pokemon.set({
         id: res.id,
-        name: res.name.toUpperCase(),
+        name: res.name.charAt(0).toUpperCase() + res.name.slice(1),
         image: res.sprites.front_default,
         type: res.types[0].type.name,
         base_experience: res.base_experience,

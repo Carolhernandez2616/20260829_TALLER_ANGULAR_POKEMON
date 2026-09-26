@@ -22,14 +22,15 @@
 }
 
 @if  (pokemon(); as poke) {
-  <div appResaltarTarjeta colorBorde="#0000FF" class="card-pokemon">
-    <h3>{{ poke.name }} (#{{ poke.id }})</h3>
-    <img [src]="poke.image">
+  <div appResaltarTarjeta colorBorde="#c48a43" class="card-pokemon">
+    <img [src]="poke.image" [alt]="'Imagen de ' + poke.name">
+    <h3>{{ poke.name }}</h3>
+    <p class="pokemon-number">Pokémon #{{ poke.id }}</p>
     <p>
       Tipo:
-      <span class="badge-tipo" [ngStyle] = "{'background-color': poke.type === 'fire' ? '#ff0000' :
-                            poke.type === 'water' ? '#0000ff' :
-                            poke.type === 'grass' ? '#00ff00' : '#757575'} ">
+      <span class="badge-tipo" [ngStyle]="{'background-color': poke.type === 'fire' ? '#c7473b' :
+                poke.type === 'water' ? '#4d8290' :
+                            poke.type === 'grass' ? '#557c55' : '#718078'}">
 
         {{ poke.type }}
 

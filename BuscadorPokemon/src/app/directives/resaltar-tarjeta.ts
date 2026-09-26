@@ -13,11 +13,12 @@ export class ResaltarTarjeta {
 }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.aplicarEfecto(`3px solid #55D48F`, 'scale(1)');
+    this.aplicarEfecto('none', 'scale(1)');
 }
 
-private aplicarEfecto(borde: string, transformacion: string) {
-    this.el.nativeElement.style.border = borde;
+private aplicarEfecto(contorno: string, transformacion: string) {
+    this.el.nativeElement.style.outline = contorno;
+    this.el.nativeElement.style.outlineOffset = '2px';
     this.el.nativeElement.style.transform = transformacion;
     this.el.nativeElement.style.transition = 'all 0.3s ease-in-out';
   }
