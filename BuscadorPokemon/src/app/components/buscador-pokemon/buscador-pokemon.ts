@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgClass , NgStyle } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { PokemonStorageService, PokemonTarjeta } from '../../services/pokemon-storage';
 import { ResaltarTarjeta } from '../../directives/resaltar-tarjeta';
 
 
 @Component({
-  imports: [FormsModule, NgClass, NgStyle, ResaltarTarjeta],
+  imports: [FormsModule, NgClass, ResaltarTarjeta],
   standalone: true, // DECLARA QUE UN COMPONENTE ES AUTONOMO
   selector: 'app-buscador-pokemon',
   styleUrl: './buscador-pokemon.css',

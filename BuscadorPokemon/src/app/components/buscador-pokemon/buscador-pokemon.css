@@ -1,8 +1,20 @@
 :host {
   display: block;
-  width: min(100% - 1rem, 1120px);
-  margin: 2rem auto;
-  color: #26382d;
+  width: 100%;
+  min-height: 75vh;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vh, 4rem) max(1rem, calc((100% - 960px) / 2));
+  color: #f4fbff;
+  background-color: #050b18;
+  background-image:
+    radial-gradient(ellipse 58% 36% at 7% 56%, rgb(255 145 30 / 92%) 0%, rgb(255 87 24 / 52%) 42%, transparent 76%),
+    radial-gradient(ellipse 58% 35% at 48% 55%, rgb(255 0 112 / 92%) 0%, rgb(210 0 128 / 48%) 48%, transparent 76%),
+    radial-gradient(ellipse 55% 37% at 94% 48%, rgb(0 218 244 / 92%) 0%, rgb(0 141 225 / 48%) 48%, transparent 76%),
+    radial-gradient(ellipse 100% 16% at 49% 43%, rgb(112 237 255 / 48%) 0%, transparent 78%),
+    linear-gradient(180deg, #061523 0%, #050713 56%, #10071b 100%);
+  background-size: 180% 180%, 160% 180%, 180% 180%, 160% 150%, 100% 100%;
+  background-position: 0% 50%, 100% 50%, 0% 50%, 100% 50%, center;
+  animation: search-background-flow 18s ease-in-out infinite alternate;
 }
 
 form {
@@ -12,10 +24,12 @@ form {
   gap: 1.25rem;
   padding: 2rem;
   background: linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(110deg, #bd914d 0%, #6f9f78 55%, #aabe70 100%) border-box;
-  border: 2px solid transparent;
+    linear-gradient(110deg, #ff174f, #ff9f1c, #00f0d0, #00aaff, #ff174f) border-box;
+  background-size: 100% 100%, 350% 350%;
+  border: 4px solid transparent;
   border-radius: 8px;
-  box-shadow: 0 10px 26px rgb(42 66 49 / 9%);
+  box-shadow: 0 0 18px rgb(255 23 79 / 28%), 0 12px 34px rgb(0 0 0 / 32%);
+  animation: pokemon-border-flow 3.5s linear infinite;
 }
 
 form > div:first-child {
@@ -25,11 +39,16 @@ form > div:first-child {
 label {
   display: block;
   margin-bottom: 0.7rem;
-  color: #344b3b;
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.3rem;
-  font-weight: 600;
+  text-align: center;
+  color: #05070d;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.35rem;
+  font-weight: 400;
   line-height: 1.3;
+  -webkit-text-stroke: 0.5px #f4e900;
+  text-shadow: -2px 0 #00e5ff, 2px 0 #ff287b, 0 -2px #ffda00, 0 2px #74ff22,
+    -2px -2px #ff8b19, 2px 2px #b12cff, 0 4px #152253, 0 0 12px #f224c4;
+  animation: label-color-cycle 5s linear infinite;
 }
 
 input[type='text'] {
@@ -59,8 +78,8 @@ form button,
   padding: 0.8rem 1.4rem;
   color: #fff;
   font-weight: 600;
-  background: #365b43;
-  border: 1px solid #365b43;
+  background: linear-gradient(110deg, #008f78, #087fc4);
+  border: 1px solid #008f78;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
@@ -68,9 +87,27 @@ form button,
 
 form button:hover:not(:disabled),
 .btn-guardar:hover {
-  background: #294a35;
-  border-color: #294a35;
+  background: linear-gradient(110deg, #00745f, #08669d);
+  border-color: #00745f;
   transform: translateY(-1px);
+}
+
+.btn-buscar {
+  background: linear-gradient(110deg, #12265f, #075b9f) padding-box,
+    linear-gradient(110deg, #00e5ff, #eaff00, #ff2587, #aaff00, #00e5ff) border-box;
+  background-size: 100% 100%, 350% 350%;
+  border: 4px solid transparent;
+  box-shadow: 0 0 14px rgb(0 229 255 / 30%), 0 5px 14px rgb(12 34 79 / 24%);
+  animation: search-button-border-flow 2.8s linear infinite;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn-buscar:hover:not(:disabled) {
+  background: linear-gradient(110deg, #1940a0, #087db7) padding-box,
+    linear-gradient(110deg, #00e5ff, #eaff00, #ff2587, #aaff00, #00e5ff) border-box;
+  background-size: 100% 100%, 350% 350%;
+  border-color: transparent;
+  box-shadow: 0 0 22px rgb(0 229 255 / 55%), 0 8px 18px rgb(12 34 79 / 32%);
 }
 
 form button:focus-visible,
@@ -94,15 +131,18 @@ form button:disabled {
 }
 
 .card-pokemon {
+  position: relative;
   width: min(100%, 420px);
   margin: 1.5rem auto 0;
   padding: 1.5rem;
   text-align: center;
-  background: linear-gradient(145deg, #fff 0%, #f5f8f2 100%) padding-box,
-    linear-gradient(135deg, #b9a071 0%, #91ad96 58%, #bdc795 100%) border-box;
-  border: 1.5px solid transparent;
+  background: linear-gradient(145deg, #fff 0%, #f5ffef 52%, #e8fbff 100%) padding-box,
+    linear-gradient(110deg, #ff174f, #ff9f1c, #00f0d0, #00aaff, #ff174f) border-box;
+  background-size: 100% 100%, 400% 400%;
+  border: 6px solid transparent;
   border-radius: 8px;
-  box-shadow: 0 10px 26px rgb(42 66 49 / 8%);
+  box-shadow: 0 0 18px rgb(255 23 79 / 42%), 0 0 34px rgb(0 224 255 / 32%), 0 14px 34px rgb(0 0 0 / 34%);
+  animation: pokemon-border-flow 2.8s linear infinite, pokemon-glow 2.8s ease-in-out infinite alternate;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -116,9 +156,12 @@ form button:disabled {
 
 .pokemon-number {
   margin: 0 0 0.75rem;
-  color: #78877c;
-  font-size: 0.9rem;
+  color: #1250a0;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
   font-weight: 600;
+  -webkit-text-stroke: 0.45px #ffd32a;
+  text-shadow: 1.5px 2px 0 #17356f;
 }
 
 .card-pokemon img {
@@ -128,7 +171,10 @@ form button:disabled {
   max-width: 100%;
   margin: 0 auto;
   object-fit: contain;
-  background: radial-gradient(circle, #fff 0 40%, #edf3eb 41% 64%, transparent 65%);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #b400ff 0%, #7900bb 34%, #35004f 60%, #09050e 84%, #020204 100%);
+  border: 2px solid #e000ff;
+  box-shadow: 0 0 14px rgb(224 0 255 / 56%), 0 0 26px rgb(176 0 255 / 30%), 0 14px 12px -10px rgb(224 0 255 / 95%);
 }
 
 .card-pokemon > p {
@@ -138,24 +184,58 @@ form button:disabled {
   gap: 1rem;
   margin: 0;
   padding: 0.8rem 0;
-  color: #53645a;
+  color: #1250a0;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
   text-align: left;
   border-top: 1px solid #edf1ed;
+  -webkit-text-stroke: 0.45px #ffd32a;
+  text-shadow: 1.5px 2px 0 #17356f;
 }
 
 .card-pokemon strong {
-  color: #304b38;
+  color: #1250a0;
+  -webkit-text-stroke: 0.45px #ffd32a;
   font-variant-numeric: tabular-nums;
 }
 
 .badge-tipo {
+  --type-start: #667085;
+  --type-end: #344054;
   padding: 0.38rem 0.85rem;
   color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  background: linear-gradient(125deg, var(--type-start), var(--type-end));
   border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 700;
   text-transform: capitalize;
-  box-shadow: 0 3px 9px rgb(38 56 45 / 18%);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--type-start), transparent 38%), 0 3px 9px rgb(12 20 36 / 28%);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 35%);
+}
+
+.badge-tipo.type-normal { --type-start: #8994a5; --type-end: #4a5363; }
+.badge-tipo.type-fire { --type-start: #ff493d; --type-end: #a90026; }
+.badge-tipo.type-water { --type-start: #20c8ff; --type-end: #0751b5; }
+.badge-tipo.type-electric { --type-start: #ffe600; --type-end: #b46a00; }
+.badge-tipo.type-grass { --type-start: #75e84e; --type-end: #137b3d; }
+.badge-tipo.type-ice { --type-start: #66f4eb; --type-end: #087b9a; }
+.badge-tipo.type-fighting { --type-start: #ff7045; --type-end: #a52220; }
+.badge-tipo.type-poison { --type-start: #e15cff; --type-end: #7123a7; }
+.badge-tipo.type-ground { --type-start: #ffd166; --type-end: #87500b; }
+.badge-tipo.type-flying { --type-start: #a0b8ff; --type-end: #4055ae; }
+.badge-tipo.type-psychic { --type-start: #ff65b3; --type-end: #a20d61; }
+.badge-tipo.type-bug { --type-start: #c5ed37; --type-end: #53710a; }
+.badge-tipo.type-rock { --type-start: #ddba7b; --type-end: #66502c; }
+.badge-tipo.type-ghost { --type-start: #b09bff; --type-end: #493889; }
+.badge-tipo.type-dragon { --type-start: #88a0ff; --type-end: #263d9f; }
+.badge-tipo.type-dark { --type-start: #9293a8; --type-end: #292638; }
+.badge-tipo.type-steel { --type-start: #c0e3eb; --type-end: #496b7a; }
+.badge-tipo.type-fairy { --type-start: #ff9ed6; --type-end: #a52272; }
+
+@keyframes pokemon-glow {
+  from { box-shadow: 0 0 18px rgb(255 23 79 / 38%), 0 0 30px rgb(0 224 255 / 26%), 0 14px 34px rgb(0 0 0 / 34%); }
+  to { box-shadow: 0 0 28px rgb(255 23 79 / 65%), 0 0 48px rgb(0 224 255 / 48%), 0 14px 34px rgb(0 0 0 / 34%); }
 }
 
 .btn-guardar {
@@ -163,16 +243,46 @@ form button:disabled {
   max-width: 290px;
   min-height: 52px;
   margin-top: 0.65rem;
-  background: linear-gradient(115deg, #168b68 0%, #35a66d 100%);
-  border: 1px solid #168b68;
-  box-shadow: 0 6px 16px rgb(27 139 99 / 25%);
+  background: linear-gradient(110deg, #b9133d 0%, #c63f0b 100%) padding-box,
+    linear-gradient(110deg, #ffe600, #ff3d8e, #00e7ff, #a6ff00, #ffe600) border-box;
+  background-size: 100% 100%, 350% 350%;
+  border: 4px solid transparent;
+  box-shadow: 0 0 16px rgb(255 61 142 / 32%), 0 6px 16px rgb(19 35 81 / 25%);
+  animation: save-button-border-flow 2.6s linear infinite;
   transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .btn-guardar:hover {
-  background: linear-gradient(115deg, #117756 0%, #218b59 100%);
-  border-color: #117756;
-  box-shadow: 0 8px 20px rgb(27 139 99 / 32%);
+  background: linear-gradient(110deg, #9e1035 0%, #ad3508 100%) padding-box,
+    linear-gradient(110deg, #ffe600, #ff3d8e, #00e7ff, #a6ff00, #ffe600) border-box;
+  background-size: 100% 100%, 350% 350%;
+  border-color: transparent;
+  box-shadow: 0 0 22px rgb(255 61 142 / 48%), 0 8px 20px rgb(19 35 81 / 32%);
+}
+
+@keyframes save-button-border-flow {
+  from { background-position: 0 0, 0% 50%; }
+  to { background-position: 0 0, 100% 50%; }
+}
+
+@keyframes search-background-flow {
+  from { background-position: 0% 50%, 100% 50%, 0% 50%, 100% 50%, center; }
+  to { background-position: 100% 50%, 0% 50%, 100% 50%, 0% 50%, center; }
+}
+
+@keyframes pokemon-border-flow {
+  from { background-position: 0 0, 0% 50%; }
+  to { background-position: 0 0, 100% 50%; }
+}
+
+@keyframes search-button-border-flow {
+  from { background-position: 0 0, 0% 50%; }
+  to { background-position: 0 0, 100% 50%; }
+}
+
+@keyframes label-color-cycle {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
 }
 
 @media (max-width: 520px) {
@@ -213,6 +323,8 @@ form button:disabled {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 

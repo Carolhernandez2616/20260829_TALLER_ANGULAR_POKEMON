@@ -1,54 +1,248 @@
-.grid-pokemons {
+:host {
+  display: block;
+  min-height: calc(100vh - 80px);
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem);
+  color: #142248;
+  background-color: #139acb;
+  background-image:
+    conic-gradient(from 18deg at 50% 50%, #f7f7ef 0deg 44deg, #dce6e9 44deg 88deg, #2ccde0 88deg 134deg, #087dc9 134deg 180deg, #203b98 180deg 225deg, #84228e 225deg 270deg, #ed2b66 270deg 315deg, #ff9c32 315deg 360deg),
+    conic-gradient(from 74deg at 50% 50%, transparent 0deg 38deg, rgb(255 183 41 / 82%) 38deg 72deg, transparent 72deg 156deg, rgb(251 40 94 / 64%) 156deg 213deg, transparent 213deg 284deg, rgb(57 219 229 / 56%) 284deg 326deg, transparent 326deg 360deg),
+    linear-gradient(120deg, #e9345e 0%, #ffd64a 34%, #53d8de 67%, #177ed2 100%);
+  background-size: 190px 170px, 270px 230px, 100% 100%;
+  background-position: 0 0, 55px 35px, center;
+}
+
+:host > div:first-child {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-  margin-top: 1.5rem;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 1120px);
+  margin: 0 auto 1.5rem;
+  padding: 1rem 1.35rem;
+  background: linear-gradient(110deg, #111936, #152749) padding-box,
+    linear-gradient(110deg, #ff3d8e, #ffb000, #00e5ff, #a500ff) border-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 25%);
+}
+
+h2 {
+  grid-column: 2;
+  text-align: center;
+  margin: 0;
+  color: #fff;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.65rem;
+  font-weight: 400;
+  line-height: 1.25;
+  text-shadow: 2px 2px 0 #244e9b, 0 0 14px rgb(0 220 255 / 35%);
+}
+
+:host > div:first-child p {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: #d7e6ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+:host > div:first-child strong {
+  display: inline-grid;
+  min-width: 2.2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0.25rem;
+  color: #101631;
+  background: linear-gradient(135deg, #d9ff65, #ffd45c);
+  border-radius: 50%;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+}
+
+.grid-pokemon {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.2rem;
+  width: min(100%, 1120px);
+  margin: 0 auto;
 }
 
 .item-inventario {
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  text-align: center;
   position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.35rem 1.1rem 1.1rem;
+  text-align: center;
+  background: linear-gradient(150deg, #fff 0%, #f3f8ff 100%) padding-box,
+    linear-gradient(125deg, #ff3d8e, #ffb000, #00e5ff, #a500ff, #ff3d8e) border-box;
+  background-size: 100% 100%, 300% 300%;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 25%);
+  animation: inventory-border-flow 5s linear infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .posicion-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  color: #edf8ff;
+  background: #14214b;
+  border: 1px solid rgb(0 217 255 / 55%);
+  border-radius: 999px;
   font-size: 0.75rem;
-  color: #757575;
+  font-weight: 700;
+}
+
+.item-inventario img {
+  display: block;
+  width: min(100%, 148px);
+  aspect-ratio: 1;
+  margin: 0.55rem 0 0.75rem;
+  object-fit: contain;
+  background: linear-gradient(155deg, #190d43, #071426) padding-box,
+    linear-gradient(135deg, #d400ff, #00e5ff) border-box;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgb(116 47 255 / 30%), 0 0 24px rgb(0 229 255 / 20%);
+}
+
+.item-inventario h4 {
+  margin: 0.15rem 0 0.6rem;
+  color: #17204b;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1.35rem;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.item-inventario > p {
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.85rem;
+  color: #fff;
+  background: linear-gradient(120deg, #c72558, #8d174d);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  box-shadow: 0 3px 10px rgb(141 23 77 / 25%);
 }
 
 .favorito-activo {
-  background-color: #fffde7;
-  border: 2px solid #fbc02d !important;
+  background: linear-gradient(150deg, #fffdf0, #fff3cb) padding-box,
+    linear-gradient(125deg, #fff06a, #ff9f1c, #ffe45c) border-box;
+  border: 3px solid transparent !important;
+  box-shadow: 0 0 22px rgb(255 207 52 / 32%), 0 12px 28px rgb(0 0 0 / 25%);
+  animation: none;
 }
 
 .acciones {
   display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+  width: 100%;
+  gap: 0.6rem;
+  margin-top: auto;
 }
 
-.btn-fav {
-  background-color: #fbc02d;
-  color: #333;
-  font-weight: bold;
-}
-
-.btn-eliminar {
-  background-color: #e57373;
-  color: white;
-  border: none;
-  border-radius: 4px;
+.acciones button {
+  flex: 1;
+  min-width: 0;
+  min-height: 42px;
+  padding: 0.55rem 0.65rem;
+  color: #fff;
+  background: linear-gradient(120deg, #1857bd, #087ba9);
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.83rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+.acciones button:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.acciones button:focus-visible {
+  outline: 3px solid #ffce46;
+  outline-offset: 2px;
+}
+
+.estrella-favorito::before {
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-size: 1.2em;
+  line-height: 0;
+  vertical-align: -0.08em;
+  content: '\2606';
+}
+
+.acciones button.btn-fav {
+  color: #342000;
+  background: linear-gradient(120deg, #ffe96a, #ffad22);
+  box-shadow: 0 0 12px rgb(255 190 41 / 34%);
+}
+
+.acciones button.btn-fav .estrella-favorito::before {
+  content: '\2605';
+}
+
+.acciones button.btn-eliminar {
+  background: linear-gradient(120deg, #e33d64, #a51d49);
 }
 
 .sin-datos {
   grid-column: 1 / -1;
+  padding: 2.5rem 1rem;
+  color: #142248;
   text-align: center;
-  padding: 2rem;
-  color: #666;
+}
+
+@keyframes inventory-border-flow {
+  from { background-position: 0 0, 0% 50%; }
+  to { background-position: 0 0, 100% 50%; }
+}
+
+@media (max-width: 560px) {
+  :host > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+    text-align: center;
+  }
+
+  :host > div:first-child p {
+    align-self: center;
+  }
+
+  .grid-pokemon {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 190px), 1fr));
+    gap: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 

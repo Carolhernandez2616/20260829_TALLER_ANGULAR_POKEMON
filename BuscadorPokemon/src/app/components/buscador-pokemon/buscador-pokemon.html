@@ -1,7 +1,7 @@
 <div>
 <form (submit)="buscarPokemon()">
   <div>
-    <label>Inserte el nombre del Pokémon:</label>
+    <label class="label-pokemon">Inserte el nombre del Pokémon</label>
         <input
           type="text"
           [(ngModel)]="nombrePokemonInput" 
@@ -11,7 +11,7 @@
   </div>
 
   <div>
-     <button type="submit" [disabled]="cargando()"> {{ cargando() ? 'Escaneando...' : 'Buscar' }}</button>
+    <button class="btn-buscar" type="submit" [disabled]="cargando()"> {{ cargando() ? 'Escaneando...' : 'Buscar' }}</button>
   </div>
 
 </form>
@@ -28,15 +28,13 @@
     <p class="pokemon-number">Pokémon #{{ poke.id }}</p>
     <p>
       Tipo:
-      <span class="badge-tipo" [ngStyle]="{'background-color': poke.type === 'fire' ? '#c7473b' :
-                poke.type === 'water' ? '#4d8290' :
-                            poke.type === 'grass' ? '#557c55' : '#718078'}">
+      <span class="badge-tipo" [ngClass]="'type-' + poke.type">
 
         {{ poke.type }}
 
       </span>
     </p>
-      <p>Exp. Base : <strong>{{ poke.base_experience }}</strong></p>
+      <p>Experiencia Base : <strong>{{ poke.base_experience }}</strong></p>
         <button class="btn-guardar" (click)="guardarEnEquipo()">
           Almacenar en inventario
         </button>

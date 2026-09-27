@@ -49,7 +49,14 @@ body {
   align-items: center;
   justify-content: center;
   padding: 3rem 1.25rem;
-  background: linear-gradient(125deg, #dce9df 0%, #eef1e9 52%, #d9e5df 100%);
+  background-color: #090719;
+  background-image:
+    radial-gradient(ellipse 66% 42% at 4% 14%, rgb(255 168 143 / 90%) 0%, rgb(174 75 218 / 68%) 24%, transparent 72%),
+    radial-gradient(ellipse 62% 48% at 91% 12%, rgb(116 137 255 / 88%) 0%, rgb(93 57 211 / 70%) 38%, transparent 76%),
+    radial-gradient(ellipse 78% 34% at 55% 50%, rgb(126 55 218 / 84%) 0%, rgb(85 45 187 / 58%) 42%, transparent 78%),
+    radial-gradient(ellipse 72% 32% at 100% 91%, rgb(255 160 142 / 82%) 0%, rgb(43 104 216 / 66%) 31%, transparent 74%),
+    radial-gradient(ellipse 80% 20% at 24% 84%, rgb(246 139 190 / 74%) 0%, rgb(74 60 204 / 60%) 38%, transparent 78%),
+    linear-gradient(135deg, #080718 0%, #171044 48%, #07162e 100%);
 }
 
 .card {
